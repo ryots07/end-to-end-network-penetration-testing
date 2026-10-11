@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#100b20">
+<title>Samyak Gautam | End-to-End Network Penetration Testing Engagement</title>
+<meta name="description" content="Major cybersecurity project: an evidence-led network penetration test of a deliberately vulnerable Metasploitable 2 lab VM.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0815;--panel:#151027;--panel2:#1b1431;--line:#34264e;--text:#f4efff;--muted:#b0a5c9;--purple:#b69aff;--mint:#a4f6d0;--orange:#ffb58b;--mono:'DM Mono',monospace;--display:'Space Grotesk',sans-serif;--body:'Manrope',sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:84px}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 var(--body);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;background:radial-gradient(ellipse at 15% 12%,#40256866,transparent 35%),radial-gradient(ellipse at 90% 32%,#174f4a3b,transparent 30%),linear-gradient(#0b0815,#0b0815)}
+#stars{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.4;background-image:radial-gradient(#d6c5ff 1px,transparent 1px),radial-gradient(#a4f6d0 1px,transparent 1px);background-size:72px 72px,113px 113px;background-position:0 0,38px 52px;animation:drift 50s linear infinite}
+@keyframes drift{to{background-position:300px 180px,-180px 320px}}@keyframes pulse{0%,100%{box-shadow:0 0 0 0 #a4f6d000}50%{box-shadow:0 0 0 10px #a4f6d015}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes sweep{0%{transform:translateY(-100%)}100%{transform:translateY(250%)}}
+a{color:var(--mint);text-decoration:none}a:hover{color:white}.wrap{width:min(1160px,calc(100% - 40px));margin:auto}.topline{height:3px;background:linear-gradient(90deg,var(--purple),var(--mint),var(--orange));position:fixed;top:0;left:0;width:0;z-index:20}
+header{padding:24px 0 82px;border-bottom:1px solid var(--line);overflow:hidden}.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:8px 0 58px}.brand{font:600 13px var(--mono);letter-spacing:.08em;display:flex;align-items:center;gap:12px;color:var(--text)}.brandmark{width:34px;height:34px;border:1px solid var(--purple);color:var(--mint);display:grid;place-items:center;transform:rotate(45deg);border-radius:10px}.brandmark span{transform:rotate(-45deg)}.links{display:flex;gap:18px;flex-wrap:wrap}.links a{font:10px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}.links a:hover{color:var(--mint)}
+.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:35px;align-items:center}.kicker,.section-no{font:11px var(--mono);color:var(--mint);letter-spacing:.15em;text-transform:uppercase}.kicker{display:flex;align-items:center;gap:10px}.dot{width:7px;height:7px;background:var(--mint);border-radius:50%;box-shadow:0 0 14px var(--mint);animation:pulse 2s infinite}
+h1,h2,h3{font-family:var(--display);line-height:1.13;letter-spacing:-.035em}h1{font-size:clamp(40px,6.8vw,78px);margin:20px 0;max-width:850px}h1 .outline{color:transparent;-webkit-text-stroke:1px var(--purple)}h2{font-size:clamp(28px,4vw,43px);margin:10px 0 0}h3{font-size:20px;margin:0 0 10px}.hero p{max-width:680px;color:var(--muted);font-size:17px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.btn{display:inline-flex;gap:10px;padding:12px 15px;border:1px solid var(--line);border-radius:7px;font:11px var(--mono);transition:.2s}.btn:hover{transform:translateY(-3px)}.primary{background:var(--mint);color:#102018;border-color:var(--mint);font-weight:600}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}.tag{font:9px var(--mono);color:var(--muted);border:1px solid var(--line);padding:7px 9px;border-radius:5px}
+.hero-art{min-height:320px;display:grid;place-items:center;position:relative}.orb{width:min(270px,70vw);aspect-ratio:1;border-radius:50%;border:1px solid #b69aff77;display:grid;place-items:center;position:relative;background:radial-gradient(circle at 35% 28%,#b69aff2c,transparent 48%);box-shadow:inset 0 0 70px #b69aff12}.orb:before,.orb:after{content:"";position:absolute;inset:14px;border:1px dashed #a4f6d055;border-radius:50%;animation:spin 28s linear infinite}.orb:after{inset:-20px;border-color:#ffb58b55;animation-direction:reverse;animation-duration:35s}.orbcore{text-align:center}.orbcore strong{display:block;font:700 43px var(--display);color:var(--mint)}.orbcore span{font:9px var(--mono);color:var(--muted);letter-spacing:.15em}.orbit{position:absolute;background:var(--panel);border:1px solid var(--line);padding:7px 9px;border-radius:5px;font:9px var(--mono);color:var(--orange)}.o1{right:-2%;top:17%}.o2{left:-3%;bottom:17%}.o3{top:0;left:15%;color:var(--mint)}
+section{padding:74px 0;border-bottom:1px solid var(--line)}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px}.sectionhead p{max-width:500px;color:var(--muted);margin:0}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.stat{border:1px solid var(--line);border-radius:11px;padding:20px;background:linear-gradient(140deg,#1a1430,#100d1e)}.stat strong{display:block;color:var(--mint);font:600 29px var(--display)}.stat span{font-size:12px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{padding:22px;border:1px solid var(--line);border-radius:11px;background:#ffffff03;transition:.25s}.card:hover{transform:translateY(-4px);border-color:#b69aff88;background:#b69aff08}.card .mini{font:10px var(--mono);color:var(--orange);margin-bottom:15px}.card p{margin:0;color:var(--muted);font-size:14px}
+.methodflow{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}.flowitem{border:1px solid var(--line);background:var(--panel);padding:16px 11px;border-radius:8px;min-height:120px}.flowitem b{display:block;color:var(--mint);font:10px var(--mono);margin-bottom:18px}.flowitem strong{font:600 15px var(--display);display:block}.flowitem small{font-size:10px;color:var(--muted)}
+.split{display:grid;grid-template-columns:.85fr 1.15fr;gap:24px;margin-top:24px}.note{padding:21px;border:1px solid #a4f6d044;background:#a4f6d008;border-radius:11px}.note p{color:var(--muted);font-size:14px;margin:0}.findinglist{display:grid}.finding{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}.finding .letter{font:11px var(--mono);color:var(--orange)}.finding h3{font-size:17px;margin:0 0 4px}.finding p{margin:0;color:var(--muted);font-size:13px}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}table{width:100%;border-collapse:collapse;min-width:600px}th,td{text-align:left;padding:14px;border-bottom:1px solid var(--line);vertical-align:top}th{font:10px var(--mono);color:var(--mint);text-transform:uppercase;letter-spacing:.08em}td{font-size:13px;color:var(--muted)}td:first-child{color:var(--text);font-weight:700}.callout{border:1px solid #ffb58b66;background:#ffb58b0a;color:#f4dfd2;padding:18px;border-radius:10px;margin-top:16px}.callout strong{color:var(--orange)}
+.phase-label{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:13px 0 8px;margin-top:15px;color:var(--mint);font:10px var(--mono);letter-spacing:.12em}.phase-label i{font-style:normal;color:var(--muted)}
+.evidencegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.evidence{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel);transition:transform .25s,border-color .25s}.evidence:hover{transform:translateY(-3px);border-color:#b69aff99}.frame-top{display:flex;justify-content:space-between;gap:8px;padding:11px 12px;color:var(--mint);font:9px var(--mono);border-bottom:1px solid var(--line)}.frame-top span+span{color:var(--muted);text-align:right}.shot{display:block;width:100%;border:0;padding:0;background:#080710;cursor:zoom-in}.shot img{display:block;width:100%;aspect-ratio:16/10;object-fit:contain;background:#080710}.evidence-copy{padding:15px}.evidence-copy p{font-size:12px;color:var(--muted);margin:0}.next{font:9px var(--mono);color:var(--purple);margin-top:12px;overflow-wrap:anywhere}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}.references{display:flex;gap:10px;flex-wrap:wrap}.references a{font:10px var(--mono);border:1px solid var(--line);padding:10px;border-radius:6px}
+footer{padding:34px 0 50px;color:var(--muted);font-size:12px}.foot{display:flex;justify-content:space-between;gap:18px;align-items:center}.foot strong{font:11px var(--mono);color:var(--text)}
+.lightbox{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;background:#05030bed;padding:24px}.lightbox.open{display:flex}.lightbox img{max-width:95vw;max-height:85vh;object-fit:contain;border:1px solid var(--line)}.close{position:absolute;right:20px;top:20px;background:var(--panel);border:1px solid var(--line);color:white;padding:10px 13px;border-radius:6px;cursor:pointer;font:11px var(--mono)}
+code{background:#201934;color:var(--mint);padding:2px 5px;border-radius:4px}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-art{min-height:270px}.grid{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr 1fr}.methodflow{grid-template-columns:repeat(3,1fr)}.split{grid-template-columns:1fr}.evidencegrid{grid-template-columns:repeat(2,1fr)}.sectionhead{display:block}.sectionhead p{margin-top:12px}}
+@media(max-width:600px){.wrap{width:calc(100% - 28px)}.nav{align-items:flex-start;padding-bottom:38px}.links{gap:9px;justify-content:flex-end}.links a{font-size:9px}.brand{font-size:10px}.grid,.cards,.methodflow,.evidencegrid{grid-template-columns:1fr 1fr}.flowitem{min-height:100px}.sectionhead{margin-bottom:22px}section{padding:55px 0}.stat{padding:14px}.stat strong{font-size:25px}.foot{align-items:flex-start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style></head><body>
+<div class="topline" id="progress"></div><div id="stars"></div>
+<header id="top"><div class="wrap">
+<nav class="nav"><a class="brand" href="#top"><span class="brandmark"><span>SG</span></span><span>SAMYAK GAUTAM / CYBERSECURITY</span></a><div class="links"><a href="#overview">Overview</a><a href="#method">Method</a><a href="#evidence">Evidence</a><a href="#analysis">Analysis</a><a href="#findings">Findings</a><a href="#conclusion">Conclusion</a></div></nav>
+<div class="hero"><div><div class="kicker"><span class="dot"></span> Major Project Report · Cybersecurity</div>
+<h1>End-to-End Network<br><span class="outline">Penetration Testing</span><br>Engagement</h1>
+<p>A practical, evidence-led penetration test of a deliberately vulnerable lab machine using Kali Linux, Nmap, Metasploit and Wireshark — from reconnaissance and vulnerability research to controlled exploitation, root-access verification and traffic observation.</p>
+<div class="actions"><a class="btn primary" href="#overview">Begin the engagement ↓</a><a class="btn" href="#evidence">Jump to evidence ↘</a></div>
+<div class="tags"><span class="tag">KALI LINUX</span><span class="tag">NMAP</span><span class="tag">METASPLOIT</span><span class="tag">WIRESHARK</span><span class="tag">METASPLOITABLE 2</span></div></div>
+<div class="hero-art"><div class="orb"><div class="orbcore"><strong>01</strong><span>ATTACK PATH<br>VALIDATED</span></div><span class="orbit o1">TCP / 4444</span><span class="orbit o2">ROOT ACCESS</span><span class="orbit o3">CVE RESEARCH</span></div></div></div>
+</div></header>
+<main class="wrap">
+<section id="overview"><div class="sectionhead reveal"><div><span class="section-no">01 · OVERVIEW</span><h2>Why this project exists.</h2></div><p>A penetration test does more than list open ports. It investigates whether an exposed service can be exploited, verifies the resulting access, and documents the impact and defensive actions supported by the evidence.</p></div>
+<div class="cards">
+<article class="card reveal"><div class="mini">PROBLEM</div><h3>Exposed services can create risk.</h3><p>A computer may run multiple network services. If one uses vulnerable software, it may provide a path to unauthorized access.</p></article>
+<article class="card reveal"><div class="mini">AIM</div><h3>Validate one attack path.</h3><p>Scan the authorized lab target, investigate the vsftpd 2.3.4 service, test the known backdoor path, and verify the privileges actually obtained.</p></article>
+<article class="card reveal"><div class="mini">APPROACH</div><h3>Prove, then explain.</h3><p>Use Nmap for discovery, Metasploit for controlled validation, Meterpreter for verification, and Wireshark to observe related network traffic.</p></article>
+</div>
+</section>
+<section id="objectives"><div class="sectionhead reveal"><div><span class="section-no">02 · OBJECTIVES</span><h2>What the practical set out to do.</h2></div><p>The engagement followed a sequence from preparing the lab to documenting the verified result.</p></div>
+<div class="cards">
+<article class="card reveal"><div class="mini">01–02 / DISCOVER</div><h3>Prepare & enumerate</h3><p>Confirm lab connectivity, scan TCP ports and identify the software versions exposed by the target.</p></article>
+<article class="card reveal"><div class="mini">03–04 / VALIDATE</div><h3>Research & exploit</h3><p>Research the vsftpd 2.3.4 backdoor issue and use the corresponding Metasploit module only against the lab target.</p></article>
+<article class="card reveal"><div class="mini">05–06 / DOCUMENT</div><h3>Verify & assess</h3><p>Check the session's privilege level, record system and network details, observe associated TCP traffic, and recommend remediation.</p></article>
+</div>
+</section>
+<section id="scope"><div class="sectionhead reveal"><div><span class="section-no">03 · SCOPE & TOOLS</span><h2>The working environment.</h2></div><p>This project covers only the lab target and the activities visible in the supplied practical evidence. It is not a full enterprise assessment.</p></div>
+<div class="grid">
+<div class="stat reveal"><strong>Kali</strong><span>Testing workstation · 192.168.147.128</span></div>
+<div class="stat reveal"><strong>Target</strong><span>Metasploitable 2 · 192.168.147.129</span></div>
+<div class="stat reveal"><strong>Nmap</strong><span>Host discovery, port scan and version detection</span></div>
+<div class="stat reveal"><strong>MSF</strong><span>Module research and controlled exploitation</span></div>
+</div>
+<div class="cards" style="margin-top:15px">
+<article class="card reveal"><div class="mini">POST-EXPLOITATION</div><h3>Meterpreter</h3><p>Used to verify the session identity and inspect system, interface and connection details after the exploit succeeded.</p></article>
+<article class="card reveal"><div class="mini">TRAFFIC ANALYSIS</div><h3>Wireshark</h3><p>Used on eth0 to filter packets involving the target IP and inspect traffic associated with the established session.</p></article>
+<article class="card reveal"><div class="mini">BOUNDARY</div><h3>Isolated lab only</h3><p>Metasploitable 2 is a deliberately vulnerable practice VM, not a real company computer. No external target was tested.</p></article>
+</div>
+</section>
+<section id="method"><div class="sectionhead reveal"><div><span class="section-no">04 · METHODOLOGY</span><h2>Recon → Validate → Verify → Report.</h2></div><p>The workflow ties each step to the question it answers, so the final claim follows the evidence rather than assumptions.</p></div>
+<div class="methodflow">
+<div class="flowitem reveal"><b>01</b><strong>Prepare</strong><small>Check lab connectivity</small></div><div class="flowitem reveal"><b>02</b><strong>Scan</strong><small>Find open ports</small></div><div class="flowitem reveal"><b>03</b><strong>Identify</strong><small>Enumerate service versions</small></div><div class="flowitem reveal"><b>04</b><strong>Validate</strong><small>Check known vulnerability</small></div><div class="flowitem reveal"><b>05</b><strong>Verify access</strong><small>Confirm root identity</small></div><div class="flowitem reveal"><b>06</b><strong>Document</strong><small>Observe traffic & report</small></div>
+</div>
+<div class="split"><div class="note reveal"><h3>Primary vulnerability lead</h3><p>Nmap identified <code>vsftpd 2.3.4</code> on TCP port 21. The Metasploit check reported that the target appeared vulnerable based on its FTP banner. The successful session and root identity output provide stronger evidence than the banner check alone.</p><p style="margin-top:12px"><a href="https://nvd.nist.gov/vuln/detail/CVE-2011-2523" target="_blank" rel="noopener">CVE-2011-2523 · NIST NVD ↗</a></p></div>
+<div class="findinglist"><div class="finding reveal"><span class="letter">A</span><div><h3>Module configured</h3><p>RHOSTS: <code>192.168.147.129</code>; LHOST: <code>192.168.147.128</code>; handler port: <code>4444</code>.</p></div></div><div class="finding reveal"><span class="letter">B</span><div><h3>Meterpreter session opened</h3><p>The exploit output reported that the backdoor was spawned and session 1 opened.</p></div></div><div class="finding reveal"><span class="letter">C</span><div><h3>Root access verified</h3><p><code>getuid</code> returned <code>Server username: root</code>.</p></div></div></div></div>
+</section>
+<section id="evidence"><div class="sectionhead reveal"><div><span class="section-no">05 · INVESTIGATION & EVIDENCE</span><h2>Now follow the practical.</h2></div><p>All 34 supplied evidence frames are kept in practical order. Each entry explains what was happening, why it mattered, and how it connects to the next stage.</p></div>
+<div class="grid" style="margin-bottom:24px"><div class="stat"><strong>34</strong><span>Evidence frames reviewed</span></div><div class="stat"><strong>23</strong><span>Open TCP ports reported by Nmap</span></div><div class="stat"><strong>root</strong><span>Identity returned by getuid</span></div><div class="stat"><strong>6</strong><span>Filtered TCP packets in Wireshark</span></div></div>
+<div class="evidencegrid"><div class="phase-label reveal"><span>ENVIRONMENT</span><i>02 FRAMES</i></div>
+<article class="evidence reveal" id="evidence-01">
+<div class="frame-top"><span>STEP 01 / 34</span><span>Environment</span></div>
+<button class="shot" data-full="evidence-01.png" aria-label="Enlarge evidence 1: Kali Linux environment"><img loading="lazy" src="evidence-01.png" alt="Kali Linux environment"></button>
+<div class="evidence-copy"><h3>Kali Linux environment</h3><p>The practical began in Kali Linux, the testing workstation that provided the terminal and tools used for the assessment.</p><div class="next">EVIDENCE NOTE · 01 Kali Linux Dekstop.png</div></div></article>
+<article class="evidence reveal" id="evidence-02">
+<div class="frame-top"><span>STEP 02 / 34</span><span>Environment</span></div>
+<button class="shot" data-full="evidence-02.png" aria-label="Enlarge evidence 2: Terminal opened"><img loading="lazy" src="evidence-02.png" alt="Terminal opened"></button>
+<div class="evidence-copy"><h3>Terminal opened</h3><p>The terminal was used to run the network commands and security tools required for the lab.</p><div class="next">EVIDENCE NOTE · 02 Opened Terminal.png</div></div></article>
+<div class="phase-label reveal"><span>LAB CONNECTIVITY</span><i>04 FRAMES</i></div>
+<article class="evidence reveal" id="evidence-03">
+<div class="frame-top"><span>STEP 03 / 34</span><span>Lab connectivity</span></div>
+<button class="shot" data-full="evidence-03.png" aria-label="Enlarge evidence 3: Kali IP configuration"><img loading="lazy" src="evidence-03.png" alt="Kali IP configuration"></button>
+<div class="evidence-copy"><h3>Kali IP configuration</h3><p>The `ip addr` command was used to inspect local network interfaces and confirm the tester&#x27;s address.</p><div class="next">EVIDENCE NOTE · 03 Terminal with ip addr cmmd.png</div></div></article>
+<article class="evidence reveal" id="evidence-04">
+<div class="frame-top"><span>STEP 04 / 34</span><span>Lab connectivity</span></div>
+<button class="shot" data-full="evidence-04.png" aria-label="Enlarge evidence 4: Routing table"><img loading="lazy" src="evidence-04.png" alt="Routing table"></button>
+<div class="evidence-copy"><h3>Routing table</h3><p>The `ip route` command was used to inspect how Kali routes traffic on the lab network.</p><div class="next">EVIDENCE NOTE · 04 ip route cmmd.png</div></div></article>
+<article class="evidence reveal" id="evidence-05">
+<div class="frame-top"><span>STEP 05 / 34</span><span>Lab connectivity</span></div>
+<button class="shot" data-full="evidence-05.png" aria-label="Enlarge evidence 5: Neighbour table"><img loading="lazy" src="evidence-05.png" alt="Neighbour table"></button>
+<div class="evidence-copy"><h3>Neighbour table</h3><p>The `ip neigh` command displayed local network neighbour information, helping confirm visibility of nearby lab devices.</p><div class="next">EVIDENCE NOTE · 05 ip neigh cmmd.png</div></div></article>
+<article class="evidence reveal" id="evidence-06">
+<div class="frame-top"><span>STEP 06 / 34</span><span>Lab connectivity</span></div>
+<button class="shot" data-full="evidence-06.png" aria-label="Enlarge evidence 6: Target connectivity test"><img loading="lazy" src="evidence-06.png" alt="Target connectivity test"></button>
+<div class="evidence-copy"><h3>Target connectivity test</h3><p>A ping test checked basic IP connectivity between Kali and the target before scanning.</p><div class="next">EVIDENCE NOTE · 06 ping cmmd.png</div></div></article>
+<div class="phase-label reveal"><span>RECONNAISSANCE</span><i>03 FRAMES</i></div>
+<article class="evidence reveal" id="evidence-07">
+<div class="frame-top"><span>STEP 07 / 34</span><span>Reconnaissance</span></div>
+<button class="shot" data-full="evidence-07.png" aria-label="Enlarge evidence 7: Initial Nmap scan"><img loading="lazy" src="evidence-07.png" alt="Initial Nmap scan"></button>
+<div class="evidence-copy"><h3>Initial Nmap scan</h3><p>Nmap checked the target for open TCP ports. The scan reported 23 open ports, giving a map of services to investigate further.</p><div class="next">EVIDENCE NOTE · 07 nmap cmmd.png</div></div></article>
+<article class="evidence reveal" id="evidence-08">
+<div class="frame-top"><span>STEP 08 / 34</span><span>Reconnaissance</span></div>
+<button class="shot" data-full="evidence-08.png" aria-label="Enlarge evidence 8: Nmap service detection"><img loading="lazy" src="evidence-08.png" alt="Nmap service detection"></button>
+<div class="evidence-copy"><h3>Nmap service detection</h3><p>The service/version scan attempted to identify which software was listening on the target&#x27;s open ports.</p><div class="next">EVIDENCE NOTE · 08 nmap -sv cmmd.png</div></div></article>
+<article class="evidence reveal" id="evidence-09">
+<div class="frame-top"><span>STEP 09 / 34</span><span>Reconnaissance</span></div>
+<button class="shot" data-full="evidence-09.png" aria-label="Enlarge evidence 9: Service/version results"><img loading="lazy" src="evidence-09.png" alt="Service/version results"></button>
+<div class="evidence-copy"><h3>Service/version results</h3><p>The detailed results identified FTP on port 21 as vsftpd 2.3.4 among other services. This version became the main vulnerability lead.</p><div class="next">EVIDENCE NOTE · 09 nmap sv cmmd success.png</div></div></article>
+<div class="phase-label reveal"><span>VULNERABILITY RESEARCH</span><i>04 FRAMES</i></div>
+<article class="evidence reveal" id="evidence-10">
+<div class="frame-top"><span>STEP 10 / 34</span><span>Vulnerability research</span></div>
+<button class="shot" data-full="evidence-10.png" aria-label="Enlarge evidence 10: Metasploit console"><img loading="lazy" src="evidence-10.png" alt="Metasploit console"></button>
+<div class="evidence-copy"><h3>Metasploit console</h3><p>The Metasploit Framework console was opened to search for a module relevant to the service identified during enumeration.</p><div class="next">EVIDENCE NOTE · 010 msfconsole -q.png</div></div></article>
+<article class="evidence reveal" id="evidence-11">
+<div class="frame-top"><span>STEP 11 / 34</span><span>Vulnerability research</span></div>
+<button class="shot" data-full="evidence-11.png" aria-label="Enlarge evidence 11: Module search"><img loading="lazy" src="evidence-11.png" alt="Module search"></button>
+<div class="evidence-copy"><h3>Module search</h3><p>The search returned the `exploit/unix/ftp/vsftpd_234_backdoor` module associated with CVE-2011-2523.</p><div class="next">EVIDENCE NOTE · 011 msf search.png</div></div></article>
+<article class="evidence reveal" id="evidence-12">
+<div class="frame-top"><span>STEP 12 / 34</span><span>Vulnerability research</span></div>
+<button class="shot" data-full="evidence-12.png" aria-label="Enlarge evidence 12: Module information"><img loading="lazy" src="evidence-12.png" alt="Module information"></button>
+<div class="evidence-copy"><h3>Module information</h3><p>The module details were inspected to understand its purpose and target service before using it in the lab.</p><div class="next">EVIDENCE NOTE · 012 msf info0.png</div></div></article>
+<article class="evidence reveal" id="evidence-13">
+<div class="frame-top"><span>STEP 13 / 34</span><span>Vulnerability research</span></div>
+<button class="shot" data-full="evidence-13.png" aria-label="Enlarge evidence 13: Module information reviewed"><img loading="lazy" src="evidence-13.png" alt="Module information reviewed"></button>
+<div class="evidence-copy"><h3>Module information reviewed</h3><p>This frame records the selected module details as part of the research stage.</p><div class="next">EVIDENCE NOTE · 013 msf info0 succes.png</div></div></article>
+<div class="phase-label reveal"><span>CONFIGURATION</span><i>05 FRAMES</i></div>
+<article class="evidence reveal" id="evidence-14">
+<div class="frame-top"><span>STEP 14 / 34</span><span>Configuration</span></div>
+<button class="shot" data-full="evidence-14.png" aria-label="Enlarge evidence 14: Module selected"><img loading="lazy" src="evidence-14.png" alt="Module selected"></button>
+<div class="evidence-copy"><h3>Module selected</h3><p>The chosen exploit module was loaded into Metasploit for controlled validation against the lab target.</p><div class="next">EVIDENCE NOTE · 014 msf use0.png</div></div></article>
+<article class="evidence reveal" id="evidence-15">
+<div class="frame-top"><span>STEP 15 / 34</span><span>Configuration</span></div>
+<button class="shot" data-full="evidence-15.png" aria-label="Enlarge evidence 15: Target address configured"><img loading="lazy" src="evidence-15.png" alt="Target address configured"></button>
+<div class="evidence-copy"><h3>Target address configured</h3><p>`RHOSTS` was set to the Metasploitable 2 target, `192.168.147.129`.</p><div class="next">EVIDENCE NOTE · 015 msf exploit rhost.png</div></div></article>
+<article class="evidence reveal" id="evidence-16">
+<div class="frame-top"><span>STEP 16 / 34</span><span>Configuration</span></div>
+<button class="shot" data-full="evidence-16.png" aria-label="Enlarge evidence 16: Local handler configured"><img loading="lazy" src="evidence-16.png" alt="Local handler configured"></button>
+<div class="evidence-copy"><h3>Local handler configured</h3><p>`LHOST` was set to the Kali address, `192.168.147.128`, for the reverse connection handler.</p><div class="next">EVIDENCE NOTE · 016 msf exploit lhost.png</div></div></article>
+<article class="evidence reveal" id="evidence-17">
+<div class="frame-top"><span>STEP 17 / 34</span><span>Configuration</span></div>
+<button class="shot" data-full="evidence-17.png" aria-label="Enlarge evidence 17: Options inspected"><img loading="lazy" src="evidence-17.png" alt="Options inspected"></button>
+<div class="evidence-copy"><h3>Options inspected</h3><p>The module options were reviewed to check the configured target and handler settings before execution.</p><div class="next">EVIDENCE NOTE · 017 msf show options.png</div></div></article>
+<article class="evidence reveal" id="evidence-18">
+<div class="frame-top"><span>STEP 18 / 34</span><span>Configuration</span></div>
+<button class="shot" data-full="evidence-18.png" aria-label="Enlarge evidence 18: Configured options confirmed"><img loading="lazy" src="evidence-18.png" alt="Configured options confirmed"></button>
+<div class="evidence-copy"><h3>Configured options confirmed</h3><p>This frame records the configured options used for the lab attempt. It is retained as evidence of setup.</p><div class="next">EVIDENCE NOTE · 018 msf show options success.png</div></div></article>
+<div class="phase-label reveal"><span>VALIDATION</span><i>01 FRAMES</i></div>
+<article class="evidence reveal" id="evidence-19">
+<div class="frame-top"><span>STEP 19 / 34</span><span>Validation</span></div>
+<button class="shot" data-full="evidence-19.png" aria-label="Enlarge evidence 19: Vulnerability check"><img loading="lazy" src="evidence-19.png" alt="Vulnerability check"></button>
+<div class="evidence-copy"><h3>Vulnerability check</h3><p>Metasploit reported that the target appeared vulnerable based on the vsftpd 2.3.4 banner. A banner-based check is an indicator, not proof on its own.</p><div class="next">EVIDENCE NOTE · 019 msf exploit check.png</div></div></article>
+<div class="phase-label reveal"><span>EXPLOITATION</span><i>01 FRAMES</i></div>
+<article class="evidence reveal" id="evidence-20">
+<div class="frame-top"><span>STEP 20 / 34</span><span>Exploitation</span></div>
+<button class="shot" data-full="evidence-20.png" aria-label="Enlarge evidence 20: Exploit execution"><img loading="lazy" src="evidence-20.png" alt="Exploit execution"></button>
+<div class="evidence-copy"><h3>Exploit execution</h3><p>The successful output reports that the backdoor was spawned and Meterpreter session 1 opened. This is the direct evidence that the selected exploit succeeded in the lab.</p><div class="next">EVIDENCE NOTE · 020 msf exploit &gt; exploit.png</div></div></article>
+<div class="phase-label reveal"><span>POST-EXPLOITATION</span><i>09 FRAMES</i></div>
+<article class="evidence reveal" id="evidence-21">
+<div class="frame-top"><span>STEP 21 / 34</span><span>Post-exploitation</span></div>
+<button class="shot" data-full="evidence-21.png" aria-label="Enlarge evidence 21: Meterpreter identity check"><img loading="lazy" src="evidence-21.png" alt="Meterpreter identity check"></button>
+<div class="evidence-copy"><h3>Meterpreter identity check</h3><p>The `getuid` command was used to check the identity associated with the Meterpreter session.</p><div class="next">EVIDENCE NOTE · 021 meter preter getuid.png</div></div></article>
+<article class="evidence reveal" id="evidence-22">
+<div class="frame-top"><span>STEP 22 / 34</span><span>Post-exploitation</span></div>
+<button class="shot" data-full="evidence-22.png" aria-label="Enlarge evidence 22: Root access confirmed"><img loading="lazy" src="evidence-22.png" alt="Root access confirmed"></button>
+<div class="evidence-copy"><h3>Root access confirmed</h3><p>The output `Server username: root` confirms that the session had root-level privileges on the target.</p><div class="next">EVIDENCE NOTE · 022 meter preter getuid succes.png</div></div></article>
+<article class="evidence reveal" id="evidence-23">
+<div class="frame-top"><span>STEP 23 / 34</span><span>Post-exploitation</span></div>
+<button class="shot" data-full="evidence-23.png" aria-label="Enlarge evidence 23: Target system information"><img loading="lazy" src="evidence-23.png" alt="Target system information"></button>
+<div class="evidence-copy"><h3>Target system information</h3><p>The `sysinfo` command identified the target as metasploitable.localdomain running Ubuntu 8.04, Linux 2.6.24-16-server, i686.</p><div class="next">EVIDENCE NOTE · 023 meter preter sysinfo.png</div></div></article>
+<article class="evidence reveal" id="evidence-24">
+<div class="frame-top"><span>STEP 24 / 34</span><span>Post-exploitation</span></div>
+<button class="shot" data-full="evidence-24.png" aria-label="Enlarge evidence 24: Process information command"><img loading="lazy" src="evidence-24.png" alt="Process information command"></button>
+<div class="evidence-copy"><h3>Process information command</h3><p>The `getpid` command requested the current process ID from the session. This is supporting session information, not the main security finding.</p><div class="next">EVIDENCE NOTE · 024 meter preter getpid.png</div></div></article>
+<article class="evidence reveal" id="evidence-25">
+<div class="frame-top"><span>STEP 25 / 34</span><span>Post-exploitation</span></div>
+<button class="shot" data-full="evidence-25.png" aria-label="Enlarge evidence 25: Process information result"><img loading="lazy" src="evidence-25.png" alt="Process information result"></button>
+<div class="evidence-copy"><h3>Process information result</h3><p>The output recorded the current process ID. It helps document the session but does not independently establish additional impact.</p><div class="next">EVIDENCE NOTE · 025 meter preter getpid sucess.png</div></div></article>
+<article class="evidence reveal" id="evidence-26">
+<div class="frame-top"><span>STEP 26 / 34</span><span>Post-exploitation</span></div>
+<button class="shot" data-full="evidence-26.png" aria-label="Enlarge evidence 26: Target interface details"><img loading="lazy" src="evidence-26.png" alt="Target interface details"></button>
+<div class="evidence-copy"><h3>Target interface details</h3><p>The interface output showed the target&#x27;s eth0 address as `192.168.147.129`, supporting the lab target identification.</p><div class="next">EVIDENCE NOTE · 026 meter preter ifconfig.png</div></div></article>
+<article class="evidence reveal" id="evidence-27">
+<div class="frame-top"><span>STEP 27 / 34</span><span>Post-exploitation</span></div>
+<button class="shot" data-full="evidence-27.png" aria-label="Enlarge evidence 27: Network connections command"><img loading="lazy" src="evidence-27.png" alt="Network connections command"></button>
+<div class="evidence-copy"><h3>Network connections command</h3><p>The `netstat` command was used to inspect listening services and network connections visible from the session.</p><div class="next">EVIDENCE NOTE · 027 meter preter netstat.png</div></div></article>
+<article class="evidence reveal" id="evidence-28">
+<div class="frame-top"><span>STEP 28 / 34</span><span>Post-exploitation</span></div>
+<button class="shot" data-full="evidence-28.png" aria-label="Enlarge evidence 28: Network connections output"><img loading="lazy" src="evidence-28.png" alt="Network connections output"></button>
+<div class="evidence-copy"><h3>Network connections output</h3><p>The displayed connection information included listening services and session-related connections on the target.</p><div class="next">EVIDENCE NOTE · 028 netstart sucess ss1.png</div></div></article>
+<article class="evidence reveal" id="evidence-29">
+<div class="frame-top"><span>STEP 29 / 34</span><span>Post-exploitation</span></div>
+<button class="shot" data-full="evidence-29.png" aria-label="Enlarge evidence 29: Network connections continued"><img loading="lazy" src="evidence-29.png" alt="Network connections continued"></button>
+<div class="evidence-copy"><h3>Network connections continued</h3><p>The second connection screenshot provides additional context for the network state observed during the session.</p><div class="next">EVIDENCE NOTE · 029 netstat sucess ss2.png</div></div></article>
+<div class="phase-label reveal"><span>TRAFFIC ANALYSIS</span><i>05 FRAMES</i></div>
+<article class="evidence reveal" id="evidence-30">
+<div class="frame-top"><span>STEP 30 / 34</span><span>Traffic analysis</span></div>
+<button class="shot" data-full="evidence-30.png" aria-label="Enlarge evidence 30: Wireshark capture started"><img loading="lazy" src="evidence-30.png" alt="Wireshark capture started"></button>
+<div class="evidence-copy"><h3>Wireshark capture started</h3><p>Wireshark was opened on Kali&#x27;s eth0 interface to observe traffic while the Meterpreter session was already active.</p><div class="next">EVIDENCE NOTE · 030 opened wireshark and started eth0.png</div></div></article>
+<article class="evidence reveal" id="evidence-31">
+<div class="frame-top"><span>STEP 31 / 34</span><span>Traffic analysis</span></div>
+<button class="shot" data-full="evidence-31.png" aria-label="Enlarge evidence 31: Session activity during capture"><img loading="lazy" src="evidence-31.png" alt="Session activity during capture"></button>
+<div class="evidence-copy"><h3>Session activity during capture</h3><p>The session was checked while the Wireshark capture was running, linking the capture period to the active lab session.</p><div class="next">EVIDENCE NOTE · 031 switched back to terminal and runned meter preter getuid.png</div></div></article>
+<article class="evidence reveal" id="evidence-32">
+<div class="frame-top"><span>STEP 32 / 34</span><span>Traffic analysis</span></div>
+<button class="shot" data-full="evidence-32.png" aria-label="Enlarge evidence 32: Wireshark capture stopped"><img loading="lazy" src="evidence-32.png" alt="Wireshark capture stopped"></button>
+<div class="evidence-copy"><h3>Wireshark capture stopped</h3><p>The capture was stopped after observing session-related traffic. This capture was made after the session was established.</p><div class="next">EVIDENCE NOTE · 032 switched back to wireshark and stopped capture.png</div></div></article>
+<article class="evidence reveal" id="evidence-33">
+<div class="frame-top"><span>STEP 33 / 34</span><span>Traffic analysis</span></div>
+<button class="shot" data-full="evidence-33.png" aria-label="Enlarge evidence 33: Target-IP display filter"><img loading="lazy" src="evidence-33.png" alt="Target-IP display filter"></button>
+<div class="evidence-copy"><h3>Target-IP display filter</h3><p>The filter `ip.addr == 192.168.147.129` was applied to isolate packets involving the target machine.</p><div class="next">EVIDENCE NOTE · 033 filtering as ip addr.png</div></div></article>
+<article class="evidence reveal" id="evidence-34">
+<div class="frame-top"><span>STEP 34 / 34</span><span>Traffic analysis</span></div>
+<button class="shot" data-full="evidence-34.png" aria-label="Enlarge evidence 34: Filtered TCP packets"><img loading="lazy" src="evidence-34.png" alt="Filtered TCP packets"></button>
+<div class="evidence-copy"><h3>Filtered TCP packets</h3><p>Six packets matched the target-IP filter. The visible traffic involved Kali port 4444 and target port 56350 in both directions. These are packets, not six vulnerabilities or attack methods.</p><div class="next">EVIDENCE NOTE · 034 filtered packets of ip addr.png</div></div></article></div></section>
+<section id="analysis"><div class="sectionhead reveal"><div><span class="section-no">06 · ANALYSIS</span><h2>What the evidence means.</h2></div><p>Ports, packets and vulnerabilities are different things. The analysis keeps them separate and interprets each result in context.</p></div>
+<div class="cards"><article class="card reveal"><div class="mini">PORTS</div><h3>23 open TCP ports</h3><p>These are network service endpoints discovered by Nmap. An open port alone does not prove that a service is vulnerable or exploitable.</p></article><article class="card reveal"><div class="mini">VULNERABILITY</div><h3>vsftpd 2.3.4</h3><p>The service version was associated with CVE-2011-2523. The module's banner-based check was a lead; the successful exploit output validated this path in the lab.</p></article><article class="card reveal"><div class="mini">PACKETS</div><h3>Six filtered TCP packets</h3><p>The Wireshark screenshot shows traffic between Kali port 4444 and target port 56350. These are packets from an established session, not six separate attack methods.</p></article></div>
+</section>
+<section id="findings"><div class="sectionhead reveal"><div><span class="section-no">07 · FINDINGS</span><h2>What was actually found.</h2></div><p>The strongest result is the privilege level demonstrated on the lab target. Other services were not claimed as exploited.</p></div>
+<div class="tablewrap reveal"><table><thead><tr><th>Finding</th><th>Evidence</th><th>Interpretation</th></tr></thead><tbody><tr><td>Multiple exposed services</td><td>Nmap scan and version detection</td><td>A broad service surface existed and should be reviewed service by service.</td></tr><tr><td>vsftpd 2.3.4 on port 21</td><td>Nmap output and module check</td><td>Identified a known vulnerability candidate associated with CVE-2011-2523.</td></tr><tr><td>Successful exploit</td><td>Metasploit reported a spawned backdoor and opened Meterpreter session</td><td>The selected exploit path succeeded against the lab VM.</td></tr><tr><td>Root-level access</td><td><code>getuid</code> returned root</td><td>Confirmed extensive access to the target system.</td></tr><tr><td>Session-related traffic</td><td>Six filtered packets in Wireshark</td><td>Observed TCP communication after the session was active; not a capture of the initial exploit sequence.</td></tr></tbody></table></div>
+<div class="callout reveal"><strong>Security assessment:</strong> The lab target was successfully compromised through the vulnerable FTP service, resulting in root-level access. This demonstrates potential severity; it does not establish compromise of a real company system or prove that data was stolen or damage occurred.</div>
+</section>
+<section id="remediation"><div class="sectionhead reveal"><div><span class="section-no">08 · REMEDIATION</span><h2>What should be fixed.</h2></div><p>The purpose of a penetration test is not only to prove a weakness, but to give the system owner a path to reduce risk.</p></div>
+<div class="cards"><article class="card reveal"><div class="mini">FIX 01</div><h3>Patch or remove</h3><p>Replace vulnerable vsftpd builds with trusted patched software and verify package integrity.</p></article><article class="card reveal"><div class="mini">FIX 02</div><h3>Reduce exposure</h3><p>Disable services that are not required and restrict exposed ports with firewall rules.</p></article><article class="card reveal"><div class="mini">FIX 03</div><h3>Least privilege</h3><p>Run network-facing services with minimal permissions and isolate them from sensitive resources.</p></article><article class="card reveal"><div class="mini">FIX 04</div><h3>Secure file transfer</h3><p>Restrict legacy FTP and use secure, authenticated transfer mechanisms where appropriate.</p></article><article class="card reveal"><div class="mini">FIX 05</div><h3>Monitor</h3><p>Review logs, unexpected listeners and outbound connections for signs of compromise.</p></article><article class="card reveal"><div class="mini">FIX 06</div><h3>Retest</h3><p>Verify the fix and assess other exposed services individually; they were not validated by this exploit.</p></article></div>
+</section>
+<section id="conclusion"><div class="sectionhead reveal"><div><span class="section-no">09 · CONCLUSION</span><h2>From scanning to demonstrated impact.</h2></div></div>
+<div class="note reveal"><p>The project began by confirming lab connectivity and using Nmap to identify exposed services. The FTP service on port 21 was identified as vsftpd 2.3.4, leading to research of CVE-2011-2523 and selection of the corresponding Metasploit module. The exploit successfully opened a Meterpreter session, and <code>getuid</code> confirmed root-level access. System and network details were recorded, and Wireshark showed six packets associated with the established session. The result demonstrates one successful attack path in a deliberately vulnerable lab VM. The practical reinforces the importance of patching, service minimization, least privilege, network restrictions and monitoring.</p></div>
+<div class="references reveal" style="margin-top:18px"><a href="https://nvd.nist.gov/vuln/detail/CVE-2011-2523" target="_blank" rel="noopener">NIST NVD · CVE-2011-2523 ↗</a><a href="https://nmap.org/book/man.html" target="_blank" rel="noopener">Nmap Reference Guide ↗</a><a href="https://www.metasploit.com/" target="_blank" rel="noopener">Metasploit Framework ↗</a><a href="https://www.wireshark.org/docs/" target="_blank" rel="noopener">Wireshark Documentation ↗</a></div>
+</section>
+</main><footer><div class="wrap foot"><div><strong>SAMYAK GAUTAM</strong><br>Cybersecurity Course Project · Major Project</div><a href="#top">BACK TO BEGINNING ↑</a></div></footer>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Evidence image preview"><button class="close" id="close">CLOSE ✕</button><img id="large" alt="Expanded evidence screenshot"></div>
+<script>
+const progress=document.getElementById('progress');window.addEventListener('scroll',()=>{const max=document.documentElement.scrollHeight-window.innerHeight;progress.style.width=(max>0?window.scrollY/max*100:0)+'%'},{passive:true});
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const box=document.getElementById('lightbox'),large=document.getElementById('large');document.querySelectorAll('.shot').forEach(b=>b.addEventListener('click',()=>{large.src=b.dataset.full;large.alt=b.getAttribute('aria-label');box.classList.add('open')}));function closeBox(){box.classList.remove('open');large.src=''}document.getElementById('close').addEventListener('click',closeBox);box.addEventListener('click',e=>{if(e.target===box)closeBox()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeBox()});
+</script></body></html>
